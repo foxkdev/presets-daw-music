@@ -2,6 +2,16 @@
 	import Counter from './Counter.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import { onMount } from 'svelte';
+
+
+		/** @type {import('./$types').PageData} */
+	export let data;
+
+
+	onMount(() => {
+		console.log('onMount', data);
+	});
 </script>
 
 <svelte:head>
@@ -11,6 +21,14 @@
 
 <section>
 	<h1>
+		<button class="btn btn-primary">Primary</button>
+		<details class="dropdown mb-32">
+			<summary class="m-1 btn">open or close</summary>
+			<ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+				<li><a>Item 1</a></li>
+				<li><a>Item 2</a></li>
+			</ul>
+		</details>
 		<span class="welcome">
 			<picture>
 				<source srcset={welcome} type="image/webp" />
@@ -24,7 +42,7 @@
 	<h2>
 		try editing <strong>src/routes/+page.svelte</strong>
 	</h2>
-
+	
 	<Counter />
 </section>
 
